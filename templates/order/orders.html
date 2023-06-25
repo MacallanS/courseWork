@@ -1,0 +1,48 @@
+{% extends '_base.html' %}
+
+
+{% block content %}
+
+    <table class="orders-table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Пользователи</th>
+                <th scope="col">Статус</th>
+                <th scope="col">Позиции</th>
+                <th scope="col">Итого</th>
+                <th scope="col">Дата</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for order in orders %}
+            <tr class="tr">
+                <th scope="row" class="order-id">{{ order.id }}</th>
+                <td class="order-user">{{ order.user }}</td>
+                <td class="order-status">{{ order.status }}</td>
+                <td>
+                    <table class="order-details-table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Детали</th>
+                                <th>Кол-во</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for item in order.order_items.all %}
+                            <tr>
+                                <td>{{ item.product.name }}</td>
+                                <td>{{ item.quantity }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </td>
+                <td class="order-total">{{ order.total_price }} руб</td>
+                <td class="order-created">{{ order.created_at }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock content %}

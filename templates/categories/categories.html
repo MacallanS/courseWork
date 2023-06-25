@@ -1,0 +1,23 @@
+{% extends '_base.html' %}
+
+
+{% block content %}
+
+    <table class="categories-table">
+        <thead>
+            <tr class="align-middle">
+                <th scope="col">#</th>
+                <th scope="col">Название</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for category in categories %}
+            <tr class="align-middle">
+                <th scope="row">{{ category.id }}</th>
+                <td>{{ category.name }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock content %}

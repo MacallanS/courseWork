@@ -1,0 +1,33 @@
+{% extends '_base.html' %}
+
+
+{% block content %}
+
+   <table class="products-table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Название</th>
+                <th scope="col">Категория</th>
+                <th scope="col">Картинка</th>
+                <th scope="col">Вес</th>
+                <th scope="col">Цена</th>
+                <th scope="col">В наличии</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product in products %}
+            <tr>
+                <th scope="row">{{ product.id }}</th>
+                <td>{{ product.name }}</td>
+                <td>{{ product.category.name }}</td>
+                <td><img class="product-image" src="{{ product.image.url }}" alt="{{ product.name }}"></td>
+                <td>{{ product.weight }} кг</td>
+                <td>{{ product.price }} руб</td>
+                <td>{{ product.in_stock }} шт.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock content %}
